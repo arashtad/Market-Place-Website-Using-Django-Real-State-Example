@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="d-flex justify-content-center">Homes for Sale:</h1>
+    <div class="d-flex justify-content-center">
+        <form method="get">
+            <div class="input-group">
+                <input type="text" name="zip_code" class="form-control" placeholder="Zip Code">
+                <input type="text" name="city" class="form-control" placeholder="City">
+                <input type="text" name="address" class="form-control" placeholder="Address">
+                <!-- <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div> -->
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="price-min" class="form-label">Min Price</label>
+                    <input type="number" name="min_price" class="form-control" id="price-min" min="0" max="1000000000" value="{{ request.GET.min_price }}">
+                </div>
+                <div class="col-md-6">
+                    <label for="price-max" class="form-label">Max Price</label>
+                    <input type="number" name="max_price" class="form-control" id="price-max" min="0" max="1000000000" value="{{ request.GET.max_price }}">
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Apply Search Filter</button>
+                </div>  
+            </div>          
+        </form>
+    </div>
+
+    <ul class="list-group container">
+        {% if form.is_bound and form.is_valid %}
+            <h2>Search Results:</h2>
+            {% for product in products %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid" style="width: 100%; height: auto;">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <h3><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></h3>
+                            <p>City: {{ product.city }}</p>
+                            <p>Price: ${{ product.price }}</p>
+                            <p>Address: {{ product.address }}</p>
+                            <p>Bedrooms: {{ product.num_bedrooms }}</p>
+                            <p>Number of Floors: {{ product.num_floors }}</p>
+                            <p>Square Feet: {{ product.square_feet }}</p>
+                            <p>Zipe Code: {{ product.zip_code }}</p>
+                            <!-- Add more details like bedrooms, square feet, etc. -->
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+            {% if products.count == 0 %}
+                <p>No results found.</p>
+            {% endif %}
+        {% else %}
+            <h2>Homes for Sale:</h2>
+            {% for product in page %}
+                <li class="list-group-item">
+                    <a href="{% url 'product_detail' product.id %}">{{ product.title }}</a>
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}" width="300" height="200">
+                    {% endif %}
+                    
+                    <!-- Display the number of bedrooms and icon -->
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-bed"></i> <!-- Bootstrap icon for bed -->
+                        {{ product.num_bedrooms }} Bedrooms
+                    </div>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+{% endblock %}
+
+

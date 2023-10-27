@@ -1,0 +1,9 @@
+{% extends "base.html" %}  {# Extend your base template if you have one #}
+
+{% block content %}
+  <div class="container">
+    <h2>Logout Successful</h2>
+    <p>You have been successfully logged out. Thank you for visiting our online shop.</p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Return to Home</a>
+  </div>
+{% endblock %}

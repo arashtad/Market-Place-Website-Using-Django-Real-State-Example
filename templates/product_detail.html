@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+<head>
+    <title>{{ product.title }}</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    
+</head>
+<body>
+    <!-- Your content here -->
+    <div class="container">
+        <h1>{{ product.title }}</h1>
+        <p>{{ product.description }}</p>
+        <p>City: {{ product.city }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p class="text-danger">Price: ${{ product.price }}</p>
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid">
+        {% endif %}
+        <p>Address: {{ product.address }}</p>
+        <p>Bedrooms: {{ product.num_bedrooms }}</p>
+        <p>Number of Floors: {{ product.num_floors }}</p>
+        <p>Square Feet: {{ product.square_feet }}</p>
+        <p>Zipe Code: {{ product.zip_code }}</p>
+    </div>
+</body>
+</html>
+{% endblock %}
