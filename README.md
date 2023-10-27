@@ -43,4 +43,16 @@ If you faced any questions don't hesitate to ask via our youtube channel at Aras
 
 This repository is created with guidance video for coding in Django which will help you understand deeper.
 
-  
+Arashtad provides a variety of products and services. See more video tutorial courses, technical content, design and development products, and professional services at:
+
+Official Website: https://arashtad.com
+More Video Tutorials: https://tuts.arashtad.com
+Our Custom Services: https://arashtad.com/services
+Blog: https://blog.arashtad.com
+
+Vimeo: https://vimeo.com/arashtad
+Udemy: https://www.udemy.com/user/arashtad
+
+GitHub: https://github.com/arashtad
+Linkedin: https://www.linkedin.com/company/arashtad
+Twitter: https://twitter.com/arashtad
